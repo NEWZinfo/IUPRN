@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IUPRN — India's Unexplained Phenomena Research Network</title>
+<meta name="description" content="IUPRN is an independent research initiative investigating unusual phenomena through evidence, scientific methodology, interdisciplinary research and responsible citizen science.">
+<meta property="og:title" content="IUPRN — India's Unexplained Phenomena Research Network">
+<meta property="og:description" content="We neither believe nor disbelieve. We investigate. An independent Indian research initiative studying unexplained phenomena through evidence and scientific method.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#070A10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070a10;
+  --bg-1:#0a0e16;
+  --panel:#0e141f;
+  --panel-2:#121a27;
+  --line:#1e2733;
+  --line-soft:#161e29;
+  --brass:#c9a24b;
+  --brass-soft:#9c8250;
+  --cyan:#7fd8e8;
+  --cyan-soft:#4f8a96;
+  --text:#e8ecf1;
+  --text-dim:#9aa7b6;
+  --text-faint:#5b6675;
+  --green:#8bbf93;
+  --olive:#b7be7c;
+  --grey-status:#a3adb9;
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'Inter', system-ui, sans-serif;
+  --mono:'IBM Plex Mono', monospace;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+}
+a{color:inherit; text-decoration:none}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:600; margin:0; letter-spacing:-0.01em; color:#f2f4f7}
+p{margin:0}
+img,svg{display:block; max-width:100%}
+button{font-family:inherit}
+::selection{background:var(--brass); color:#0a0e16}
+
+/* background texture */
+#stars{position:fixed; inset:0; z-index:-2; background:
+  radial-gradient(ellipse 90% 60% at 50% -10%, #101a26 0%, var(--bg) 55%);
+}
+.grid-overlay{position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(127,216,232,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(127,216,232,0.035) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 0%, black 30%, transparent 78%);
+}
+
+.container{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+@media (max-width:640px){.container{padding:0 20px}}
+
+/* NAV */
+header.site{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
+  background:rgba(7,10,16,0.78); border-bottom:1px solid var(--line-soft);}
+.navbar{display:flex; align-items:center; justify-content:space-between; height:76px}
+.brandmark{display:flex; align-items:center; gap:12px}
+.brandmark .name{font-family:var(--serif); font-size:19px; font-weight:600; letter-spacing:0.02em; color:#f2f4f7; line-height:1.1}
+.brandmark .sub{display:block; font-family:var(--sans); font-size:10.5px; color:var(--text-faint); letter-spacing:0.03em; margin-top:2px}
+.nav-links{display:flex; align-items:center; gap:30px}
+.nav-links a{font-size:14.5px; color:var(--text-dim); position:relative; padding:6px 0; transition:color .2s}
+.nav-links a:hover, .nav-links a.active{color:var(--text)}
+.nav-links a.active::after{content:''; position:absolute; left:0; right:0; bottom:-2px; height:1px; background:var(--brass)}
+.nav-cta{display:flex; gap:12px; align-items:center}
+.hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px}
+.hamburger span{width:22px; height:1.5px; background:var(--text)}
+.mobile-menu{display:none; flex-direction:column; padding:8px 20px 22px; border-top:1px solid var(--line-soft)}
+.mobile-menu a{padding:12px 0; font-size:15px; color:var(--text-dim); border-bottom:1px solid var(--line-soft)}
+@media (max-width:860px){
+  .nav-links, .nav-cta .btn-ghost{display:none}
+  .hamburger{display:flex}
+  .mobile-menu.open{display:flex}
+}
+
+/* BUTTONS */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 22px; font-size:14px; font-weight:600;
+  border-radius:3px; cursor:pointer; border:1px solid transparent; transition:all .2s; white-space:nowrap; font-family:var(--sans)}
+.btn-primary{background:var(--brass); color:#12100a; border-color:var(--brass)}
+.btn-primary:hover{background:#dbb562}
+.btn-ghost{background:transparent; color:var(--text); border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--cyan-soft); color:var(--cyan)}
+.btn-outline-cyan{background:transparent; color:var(--cyan); border-color:var(--cyan-soft)}
+.btn-outline-cyan:hover{background:rgba(127,216,232,0.08)}
+.btn-sm{padding:8px 14px; font-size:12.5px}
+.btn-block{width:100%}
+
+/* LAYOUT HELPERS */
+.section{padding:96px 0}
+@media (max-width:640px){.section{padding:64px 0}}
+.section-tight{padding:64px 0}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--brass); font-weight:600; margin-bottom:14px}
+.eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--brass); box-shadow:0 0 8px var(--brass)}
+.lede{color:var(--text-dim); font-size:17px; max-width:640px; margin-top:16px}
+.hr{height:1px; background:var(--line-soft); border:none; margin:0}
+
+/* PANELS / CARDS */
+.panel{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid var(--line); border-radius:4px}
+.badge{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:5px 10px; border-radius:2px; font-family:var(--mono); letter-spacing:0.02em; border:1px solid transparent}
+.badge .dot{width:6px; height:6px; border-radius:50%}
+.badge-investigating{color:var(--cyan); border-color:rgba(127,216,232,0.35); background:rgba(127,216,232,0.06)}
+.badge-investigating .dot{background:var(--cyan)}
+.badge-explained{color:var(--green); border-color:rgba(139,191,147,0.35); background:rgba(139,191,147,0.06)}
+.badge-explained .dot{background:var(--green)}
+.badge-probably{color:var(--olive); border-color:rgba(183,190,124,0.35); background:rgba(183,190,124,0.06)}
+.badge-probably .dot{background:var(--olive)}
+.badge-inconclusive{color:var(--grey-status); border-color:rgba(163,173,185,0.35); background:rgba(163,173,185,0.06)}
+.badge-inconclusive .dot{background:var(--grey-status)}
+.badge-unresolved{color:var(--brass); border-color:rgba(201,162,75,0.4); background:rgba(201,162,75,0.08)}
+.badge-unresolved .dot{background:var(--brass); box-shadow:0 0 6px var(--brass)}
+
+.mono{font-family:var(--mono)}
+.text-dim{color:var(--text-dim)}
+.text-faint{color:var(--text-faint)}
+
+footer.site{border-top:1px solid var(--line-soft); padding:56px 0 32px; margin-top:80px}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px}
+@media (max-width:760px){.footer-grid{grid-template-columns:1fr 1fr}}
+.footer-grid h4{font-size:13px; color:var(--text); margin-bottom:14px; font-family:var(--sans); font-weight:600}
+.footer-grid a, .footer-grid p{font-size:13.5px; color:var(--text-dim); display:block; margin-bottom:9px}
+.footer-bottom{display:flex; justify-content:space-between; align-items:center; margin-top:44px; padding-top:24px; border-top:1px solid var(--line-soft); flex-wrap:wrap; gap:12px}
+.footer-bottom p{font-size:12.5px; color:var(--text-faint)}
+
+#app{min-height:60vh}
+.skip-link{position:absolute; left:-999px; top:0; background:var(--brass); color:#000; padding:10px; z-index:100}
+.skip-link:focus{left:10px}
+
+/* form basics */
+.field{display:flex; flex-direction:column; gap:7px; margin-bottom:20px}
+.field label{font-size:13px; color:var(--text-dim); font-weight:500}
+.field .hint{font-size:12px; color:var(--text-faint)}
+.field input, .field select, .field textarea{
+  background:var(--panel); border:1px solid var(--line); color:var(--text); padding:12px 14px; border-radius:3px; font-size:14.5px; font-family:var(--sans); width:100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--cyan-soft); box-shadow:0 0 0 3px rgba(127,216,232,0.12)}
+.field textarea{resize:vertical; min-height:100px}
+.form-row{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+@media (max-width:640px){.form-row{grid-template-columns:1fr}}
+.checkbox-row{display:flex; align-items:flex-start; gap:10px; margin-bottom:20px}
+.checkbox-row input{margin-top:4px}
+.checkbox-row label{font-size:13.5px; color:var(--text-dim)}
+.notice{border:1px solid var(--line); background:rgba(201,162,75,0.05); border-left:2px solid var(--brass); padding:14px 16px; font-size:13.5px; color:var(--text-dim); border-radius:2px}
+.success-box{border:1px solid rgba(139,191,147,0.4); background:rgba(139,191,147,0.06); padding:18px 20px; border-radius:3px; color:var(--green); font-size:14px}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{outline:2px solid var(--cyan); outline-offset:2px}
+
+/* ---- responsive grid utilities (real classes, not inline-style hacks) ---- */
+.grid-2{display:grid; grid-template-columns:1fr 1fr}
+.grid-3{display:grid; grid-template-columns:1fr 1fr 1fr}
+.grid-4{display:grid; grid-template-columns:repeat(4,1fr)}
+.grid-featured{display:grid; grid-template-columns:1.3fr 1fr}
+.gap-1{gap:1px}
+.gap-20{gap:20px}
+.gap-22{gap:22px}
+.gap-28{gap:28px}
+.gap-32{gap:32px}
+.gap-56{gap:56px}
+.align-center{align-items:center}
+.form-row-3{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:20px}
+.featured-side{border-left:1px solid var(--line)}
+@media (max-width:860px){
+  .grid-3{grid-template-columns:1fr}
+  .grid-featured{grid-template-columns:1fr}
+  .featured-side{border-left:none; border-top:1px solid var(--line)}
+}
+@media (max-width:760px){
+  .grid-4{grid-template-columns:1fr 1fr}
+  .grid-2{grid-template-columns:1fr}
+  .form-row-3{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .grid-4{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr !important}
+}
+
+/* hero layering so the orbit graphic never sits above headline text */
+.hero-wrap{position:relative}
+.hero-content{position:relative; z-index:2}
+.hero-orbit{position:absolute; z-index:1}
+</style>
+</head>
+<body>
+<a href="#home" class="skip-link">Skip to content</a>
+<canvas id="stars"></canvas>
+<div class="grid-overlay"></div>
+
+<header class="site">
+  <div class="container navbar">
+    <a href="#home" class="brandmark" id="logoLink"></a>
+    <nav class="nav-links" id="navLinks"></nav>
+    <div class="nav-cta">
+      <a href="#report" class="btn btn-ghost btn-sm">Report a Case</a>
+      <a href="#join" class="btn btn-primary btn-sm">Join IUPRN</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</header>
+
+<main id="app"></main>
+
+<footer class="site">
+  <div class="container">
+    <div class="footer-grid" id="footerGrid"></div>
+    <div class="footer-bottom">
+      <p>© 2026 IUPRN — India's Unexplained Phenomena Research Network. An independent research initiative.</p>
+      <p>KNOWLEDGE CANCELS FEAR.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="components.js"></script>
+<script src="pages.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
